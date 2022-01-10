@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>記帳系統</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <section id="intro">
+        <div class="container" align="center">
+            <div class="card" style="width: 50rem;">
+                <div class="card-body" style="background: #00A8A8; ">
+
+                    <h1 class="card-title" align="center">宏哥記帳</h1>
+                    <p class="card-text" style="font-size:30px;" align="center">嗨，趕快來用我的記帳網站，不然要你好看。</p>
+                </div>
+            </div>
+        </div>
+    </section>    
+    <section id="money">
+        <div class="container">
+            <div class="jumbotron bg-info text-white" id="reload">
+                <div id="choose">
+                </div>
+                <h1>趕快來記帳啦! 窮鬼 </h1>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                        六合一
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <button id="down" class="dropdown-item" href="#">食</button>
+                        <button id="down1"class="dropdown-item" href="#">衣</button>
+                        <button id="down2"class="dropdown-item" href="#">住</button>
+                        <button id="down3"class="dropdown-item" href="#">行</button>
+                        <button id="down4"class="dropdown-item" href="#">育</button>
+                        <button id="down5"class="dropdown-item" href="#">樂</button>
+                    </div>
+                </div>
+                <img src="pictures/sssssssss.jpg" align="right">
+                <p id="lay1">
+                <p align="left">食</p> <input id="number1" type="number">
+                </p>
+                <p id="lay2">
+                <p align="left">衣</p> <input id="number2" type="number">
+                </p>
+                <p id="lay3">
+                <p align="left">住</p>    <input id="number3" type="number">
+                </p>
+                <p id="lay4">
+                <p align="left">行</p>   <input id="number4" type="number">
+                </p>
+                <p id="lay5">
+                <p align="left">育</p>   <input id="number5" type="number">
+                </p>
+                <p id="lay6">
+                <p align="left">樂</p>   <input id="number6" type="number">
+                </p>
+                <p>
+                    <button id="inputdata" type="button" class="btn btn-secondary">輸入</button>
+                </p>
+                <p id="success">
+                </p>
+                <div id="kenny">
+
+                </div>
+            </div>             
+        </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        
+        $(function () {
+            $('#inputdata').click(function () {
+                let good = "<div class=\"alert alert-warning\"><button class=\"close\" data-dismiss=\"alert\">&times;</button><strong>上傳成功!</strong></div >";
+                $(good).insertAfter("#success");
+                var num1 = document.getElementById('number1').value;
+                var num2 = document.getElementById('number2').value;
+                var num3 = document.getElementById('number3').value;
+                var num4 = document.getElementById('number4').value;
+                var num5 = document.getElementById('number5').value;
+                var num6 = document.getElementById('number6').value;
+                localStorage.setItem('value1', num1);
+                localStorage.getItem('value1');
+                localStorage.setItem('value2', num2);
+                localStorage.getItem('value2');
+                localStorage.setItem('value3', num3);
+                localStorage.getItem('value3');
+                localStorage.setItem('value4', num4);
+                localStorage.getItem('value4');
+                localStorage.setItem('value5', num5);
+                localStorage.getItem('value5');
+                localStorage.setItem('value6', num6);
+                localStorage.getItem('value6');
+                var Today = new Date();
+                var time = Today.getFullYear() + " 年 " + (Today.getMonth() + 1) + " 月 " + Today.getDate() + " 日 " + Today.getHours() + " 時 " + Today.getMinutes() + " 分 " + Today.getSeconds() + " 秒";
+                var kennytwo = document.createElement('h1');
+                var kennythree = document.createElement('h3');
+                document.getElementById('kenny').appendChild(kennytwo);
+                document.getElementById('kenny').appendChild(kennythree);
+                var total = parseInt(num1) + parseInt(num2) + parseInt(num3) + parseInt(num4) + parseInt(num5) + parseInt(num6);
+                $("h1:eq(2)").text("最新總金額:" + total);
+                $("h3:last").text("食:" + num1 + " 衣:" + num2 + " 住:" + num3 + " 行:" + num4 + " 育:" + num5 + " 樂:" + num6 + "    "+time);
+            });
+        });
+        $(function () {
+            $('#down').click(function () {
+                $('#number1').css("background-color", "yellow");
+            });
+            $('#down1').click(function () {
+                $('#number2').css("background-color", "yellow");
+            });
+            $('#down2').click(function () {
+                $('#number3').css("background-color", "yellow");
+            });
+            $('#down3').click(function () {
+                $('#number4').css("background-color", "yellow");
+            });
+            $('#down4').click(function () {
+                $('#number5').css("background-color", "yellow");
+            });
+            $('#down5').click(function () {
+                $('#number6').css("background-color", "yellow");
+            });
+        });
+        
+    </script>
+</body>
+</html>
